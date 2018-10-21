@@ -1,0 +1,59 @@
+﻿@model Domain.ServiceProviders.ServiceProviderModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/PostEvalutaion.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container headerbreadcrumb">
+        <ol class="breadcrumb">
+            <li>@Model.Name (*为必填选项)</li>
+        </ol>
+    </div>
+    <div id="total_star">
+        <span>总体评价：</span>
+        <ul style="width:170px; height: 42px;">
+            <li><a href="javascript:;">1</a></li>
+            <li><a href="javascript:;">2</a></li>
+            <li><a href="javascript:;">3</a></li>
+            <li><a href="javascript:;">4</a></li>
+            <li><a href="javascript:;">5</a></li>
+        </ul>
+        <label id="total_lbl">点击星星为商户打分</label>
+    </div>
+    <div id="performance_star">
+        <span>性能评分：</span>
+        <ul style="width:170px;">
+            <li><a href="javascript:;">1</a></li>
+            <li><a href="javascript:;">2</a></li>
+            <li><a href="javascript:;">3</a></li>
+            <li><a href="javascript:;">4</a></li>
+            <li><a href="javascript:;">5</a></li>
+        </ul>
+        <label id="performance_lbl">点击星星为商户打分</label>
+    </div>
+    <div id="service_star">
+        <span>服务评分：</span>
+        <ul style="width:170px;">
+            <li><a href="javascript:;">1</a></li>
+            <li><a href="javascript:;">2</a></li>
+            <li><a href="javascript:;">3</a></li>
+            <li><a href="javascript:;">4</a></li>
+            <li><a href="javascript:;">5</a></li>
+        </ul>
+        <label id="service_lbl">点击星星为商户打分</label>
+    </div>
+    <form action="PostEvaluatuin" method="post">
+        <input style="display:none" type="text" name="providerID" value="@Model.ID">
+        <input id="sGrade" type="text" name="starScore">
+        <div class="evaltuation">
+            <span>评价：</span>
+            <textarea name="content"></textarea>
+        </div>
+        <input type="submit" class="btn btn-info" value="提交">
+    </form>
+    <script src="~/js/PostEvaluation.js"></script>
+</body>
+</html>

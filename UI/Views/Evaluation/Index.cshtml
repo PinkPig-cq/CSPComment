@@ -1,0 +1,127 @@
+﻿
+@model Domain.ServiceProviders.ServiceProvider
+@{
+    var StarList = ViewBag.Star as UI.Models.StarType;
+    var EvaluationID = ViewBag.EvaluationID;
+    var list = ViewBag.Pagination;
+    //获取样式
+    var a = Model;
+    var PagedListRenderOptions = Core.PageListOptions.GetPagedListRenderOptions;
+    var NavName = Model.EvaluationOrderList.Where(o => o.ID == EvaluationID).FirstOrDefault()?.SysUser.Name;
+    var RouteData = new Dictionary<string, string>();
+    RouteData.Add("ProviderID", Model.ID.ToString());
+    RouteData.Add("EvaluationID", EvaluationID.ToString());
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>回复页面</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/EvaluationIndex.css" rel="stylesheet" />
+    <script src="~/js/GetStar.js"></script>
+</head>
+<body>
+    <div class="container headerbreadcrumb">
+        <h1>云服务排行</h1>
+        <ol class="breadcrumb">
+            <li><a href="#">云服务</a></li>
+            <li><a href="#">点评</a></li>
+            <li class="active"><a href="#">@Model.Name</a></li>
+            <li class="active">@NavName 的评论</li>
+        </ol>
+    </div>
+    <div class="container Header breadcrumb">
+        <div class="shop_top">
+            <div class="Provider_header">
+                <span>@Model.Name</span>
+            </div>
+            <div class="shop_info1">
+                <span id="total_star">
+                    <img src="~/images/star24_off@2x.png" height="15px">
+                    <img src="~/images/star24_off@2x.png" height="15px">
+                    <img src="~/images/star24_off@2x.png" height="15px">
+                    <img src="~/images/star24_off@2x.png" height="15px">
+                    <img src="~/images/star24_off@2x.png" height="15px">
+                </span>
+                <script type="text/javascript">
+                                        var i = iScore = iStar = 0;
+                                         var total_oStar = document.getElementById("total_star");
+                                         var total_aLi = total_oStar.getElementsByTagName("img");
+                                           fnPoint(@Model.Star,total_aLi);
+                </script>
+                <span>@Model.EvaluationOrderList.Count 条评论</span>
+                <span>性能好</span>
+            </div>
+            <div class="shop_info2">
+                <p><span>地址:</span>金开大道1590号两江盛景写字楼12楼(距地铁3/5号线园博园站2</p>
+                <p><span class="glyphicon glyphicon-earphone"></span>888888888888888</p>
+            </div>
+            <a href="/ServiceProvider/ServiceProviderDetails?ID=@Model.ID" class="btn btn-succes">了解详情</a>
+        </div>
+    </div>
+    <div class="Evalution container">
+        <ul class="media-list">
+            @foreach (var item in Model.EvaluationOrderList)
+            {
+                <li class="media">
+                    <div class="media-left">
+                        <img class="img-circle" src="~/images/学姐1.png" width="50px" class="media-object">
+                    </div>
+                    <div class="media-body">
+                        <h5 class="media-heading">@item.SysUser.Name</h5>
+                        <span id="'total_star'+@item.ID">
+                            <img src="~/images/star24_off@2x.png" height="15px">
+                            <img src="~/images/star24_off@2x.png" height="15px">
+                            <img src="~/images/star24_off@2x.png" height="15px">
+                            <img src="~/images/star24_off@2x.png" height="15px">
+                            <img src="~/images/star24_off@2x.png" height="15px">
+                        </span>
+                        <script type="text/javascript">
+                                        var i = iScore = iStar = 0;
+                                         var total_oStar = document.getElementById("'total_star'+@item.ID");
+                                         var total_aLi = total_oStar.getElementsByTagName("img");
+                                           fnPoint(@item.Star,total_aLi);
+                        </script>
+                        <p>@item.Content</p>
+                        <div class="operation">
+                            <span>@item.EvaluationStart</span><span class="operation_right">
+                                <a>赞(1)</a>
+                                <a href="/Evaluation/Index?ProviderID=@Model.ID&EvaluationID=@item.ID">回应(@item.ReplyList.Count)</a><a>举报</a>
+                            </span>
+                        </div>
+                        @*回复添加框*@
+                        @if (item.ID == EvaluationID)
+                        {
+                            <div class="AddReply">
+                                <h4>我想回复</h4>
+                                <form action="PostReply" method="post">
+                                    <input type="text" style="display:none" name="providerID" value="@Model.ID">
+                                    <input type="text" style="display:none" name="evaluationID" value="@EvaluationID">
+                                    <textarea name="content"></textarea>
+                                    <input id="postReply" class="btn btn-info" type="submit" value="发表">
+                                </form>
+                            </div>
+                            <div class="operation"><span>网友回复</span></div>
+                            @foreach (var reply in item.ReplyList)
+                            {
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img class="img-circle" src="~/images/学姐1.png" width="50px" class="media-object">
+                                    </div>
+                                    <div class="media-body">
+                                        <h5 class="media-heading">@reply.Writer</h5>
+                                        <p>@reply.Content</p>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                    </div>
+                </li>
+            }
+            <pager class="pager-container right" style="float:right;" list="@list" options="@PagedListRenderOptions"
+                   asp-action="Index" asp-controller="Evaluation" asp-all-route-data="RouteData" />
+        </ul>
+    </div>
+</body>
+</html>

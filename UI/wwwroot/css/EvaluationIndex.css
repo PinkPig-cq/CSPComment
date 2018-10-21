@@ -1,0 +1,134 @@
+﻿p {
+    font-family: PingFangSC-Regular,Microsoft YaHei,'Hiragino Sans GB',Helvetica;
+}
+
+.right {
+    width: 60%;
+    overflow: hidden;
+    margin-left: 50px;
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.shop_bottom {
+    width: 200%;
+    border-top: 1px dashed gray;
+    padding-top: 10px;
+}
+
+.shop_picture {
+    line-height: 100px;
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.Provider_header {
+    display: flex;
+    align-items: center;
+}
+
+    .Provider_header > span:first-child {
+        font-size: 20px;
+        height: 20px;
+        display: inline-block;
+        padding-right: 20px;
+        line-height: 25px;
+    }
+
+.shop_top > div {
+    padding-top: 8px;
+}
+
+.shop_top {
+    padding-bottom: 10px;
+}
+
+.shop_info1 span {
+    padding-right: 20px;
+}
+
+.glyphicon {
+    color: green;
+}
+
+.glyphicon-arrow-up {
+    font-size: 10px;
+}
+
+.shop_info2 span {
+    padding-right: 20px;
+    color: gray;
+}
+
+.Header p {
+    width: 460px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+    .Header p > span {
+        color: orange;
+    }
+
+.container {
+    min-width: 800px;
+}
+
+.a {
+    padding-top: 10px;
+}
+
+.media-body p {
+    padding-top: 20px;
+    text-indent: 2em;
+}
+
+.operation span {
+    display: inline-block;
+    height: 38px;
+    line-height: 38px;
+}
+
+.operation {
+    color: gray;
+}
+
+.operation_right {
+    float: right;
+}
+
+.operation a {
+    color: gray;
+    display: inline-block;
+    height: 38px;
+    line-height: 38px;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+    text-decoration-line: none;
+}
+
+    .operation a:hover {
+        color: orange;
+    }
+
+.btn_Evalution {
+    float: right;
+}
+
+.Header {
+    max-width: 1140px;
+}
+
+.Provider_header {
+    display: flex;
+    align-items: center;
+}
+
+textarea {
+    width: 1070px;
+    height: 110px;
+    resize: none;
+}
+

@@ -1,0 +1,109 @@
+﻿body {
+    background: #eaeaea;
+    margin-left: 23%;
+}
+ul {
+    text-decoration: none;
+    list-style: none;
+    width: 900px;
+}
+
+li {
+    padding-top: 20px;
+}
+
+.header {
+    background: white;
+}
+
+    .header > a {
+        display: inline-block;
+        height: 38px;
+        line-height: 38px;
+        margin-left: 20px;
+        margin-right: 20px;
+        text-align: center;
+        text-decoration-line: none;
+    }
+
+        .header > a:last-child {
+            float: right;
+        }
+
+.list-group {
+    max-width: 800px;
+    min-width: 688px;
+}
+
+.right {
+    width: 60%;
+    overflow: hidden;
+    margin-left: 50px;
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.shop_bottom {
+    width: 200%;
+    border-top: 1px dashed gray;
+    padding-top: 10px;
+}
+
+.shop_picture {
+    line-height: 100px;
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.Provider_header {
+    display: flex;
+    align-items: center;
+}
+
+    .Provider_header > span:first-child {
+        font-size: 20px;
+        height: 20px;
+        display: inline-block;
+        padding-right: 20px;
+        line-height: 25px;
+    }
+
+.shop_top > div {
+    padding-top: 8px;
+}
+
+.shop_top {
+    padding-bottom: 10px;
+}
+
+.shop_info1 span {
+    padding-right: 20px;
+}
+
+.glyphicon {
+    color: green;
+}
+
+.glyphicon-arrow-up {
+    font-size: 10px;
+}
+
+.shop_info2 span {
+    padding-right: 20px;
+    color: gray;
+}
+
+.Provider span:hover, p:hover {
+    color: orange;
+}
+
+p {
+    width: 460px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+    p > span {
+        color: orange;
+    }

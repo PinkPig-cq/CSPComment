@@ -1,0 +1,84 @@
+﻿@model IList<Domain.ServiceProviders.ServiceProviderModel>
+@{
+    ViewData["Title"] = "Home Page";
+    var list = ViewBag.Pagination;
+    //获取样式
+    var PagedListRenderOptions = Core.PageListOptions.GetPagedListRenderOptions;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>首页列表</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/HomeIndex.css" rel="stylesheet" />
+    <script src="~/js/GetStar.js"></script>
+</head>
+<body>
+    <ul class="list-group">
+        <li>
+            <div class="list-group-item header">
+                <a>默认列表</a>
+                <span>|</span>
+                <a>人气<i class="glyphicon glyphicon-arrow-up"></i></a>
+                <span>|</span>
+                <a>共有 @Model.Count 个商家</a>
+            </div>
+        </li>
+        @foreach (var item in Model)
+        {
+            <li class="Provider">
+                <a class="list-group-item" href="/ServiceProvider/ServiceProviderDetails?ID=@item.ID">
+                    <div class="shop_picture">
+                        <img src="~/images/学姐1.png" width="200px">
+                    </div>
+                    <div class="right">
+                        <div class="shop_top">
+                            <div class="Provider_header">
+                                <span>@item.Name</span>
+                                <span><img src="~/images/brand@2x.png" height="20px"></span>
+                                <span><img src="~/images/guarantee_1@2x.png" height="20px"></span>
+
+                            </div>
+                            <div class="shop_info1">
+                                <span id="total_star">
+                                    <img src="~/images/star24_off@2x.png" height="15px">
+                                    <img src="~/images/star24_off@2x.png" height="15px">
+                                    <img src="~/images/star24_off@2x.png" height="15px">
+                                    <img src="~/images/star24_off@2x.png" height="15px">
+                                    <img src="~/images/star24_off@2x.png" height="15px">
+                                </span>
+                                <script type="text/javascript">
+                                        var i = iScore = iStar = 0;
+                                         var total_oStar = document.getElementById("total_star");
+                                         var total_aLi = total_oStar.getElementsByTagName("img");
+                                           fnPoint(@item.Star,total_aLi);
+                                </script>
+                                <span>@item.EvaluationCount 条评论</span>
+                                <span>均价80/月</span>
+                                <span>全国</span>
+                            </div>
+                            <div class="shop_info2">
+                                <i class="glyphicon glyphicon-ok"></i>
+                                <span>Linux/Windows</span>
+                                <i class="glyphicon glyphicon-ok"></i>
+                                <span>MySql</span>
+                                <i class="glyphicon glyphicon-ok"></i>
+                                <span>IIS</span>
+                                <i class="glyphicon glyphicon-ok"></i>
+                                <span>Visual Studio2017</span>
+                            </div>
+                        </div>
+                        <div class="shop_bottom">
+                            <p><span>优惠1:</span>	今天全场一律5折今天全场一律5折今天全场一律5折今天全场一律5折</p>
+                            <p><span>优惠2:</span>	凡购买1月以上者加送2个月</p>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        }
+    </ul>
+    <pager class="pager-container right" style="float:right;position:absolute;right:-370px;" list="@list" options="@PagedListRenderOptions"
+           asp-action="Index" asp-controller="Home" />
+</body>
+</html>
